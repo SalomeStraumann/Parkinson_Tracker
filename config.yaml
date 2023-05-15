@@ -1,0 +1,23 @@
+credentials:
+  usernames:
+    sara:
+      name: Sara van Oordt
+      password: $2b$12$DS.19G9UOV2ogE7kedFPV.skzd5bdrwq2cL0oKB.NfrJoN1BkbfbC # To be replaced with hashed password
+    ronja:
+      name: Ronja
+      password: $2b$12$fBRNDVr1JxBZddA3bOlx0uknVn8oAh9yeMK25xB/ujYvClMGcwAT2 # To be replaced with hashed password
+    elisabeth:
+      name: Elisabeth
+      password: $2b$12$kv0UILOK7i9Wz6aNSPsBYOV64mpz.jwrdxj0haP8f9c5QOr0ZvREi # To be replaced with hashed password
+    anna:
+      name: Anna
+      password: $2b$12$nkiXqmnE.ZQ1DrMMwSEX9uSiDkDkmUm8Rr.JcmaioANNl.zvasJGK # To be replaced with hashed password
+    fabienne:
+      name: Fabienne Schätti
+      password: $2b$12$4ivfeRX/xhofPMDbA0XSVufNBzHUaXtYiUdVwh2Ex7Q2v9YZmZdQO # To be replaced with hashed password
+          
+      
+cookie:
+  expiry_days: 30  # number of days until password is asked again
+  key: JgDyEoKUNItM5prxo194jDeLYzVzmYE6 # Must be string, use https://randomkeygen.com/
+  name: streamlitcookie
