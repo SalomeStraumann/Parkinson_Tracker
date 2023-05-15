@@ -125,7 +125,7 @@ severity_levels_lim = {
     2: 'Geringfügig',
     3: 'Leicht',
     4: 'Etwas',
-    5: 'MÃ¤ssig',
+    5: 'Mässig',
     6: 'Deutlich',
     7: 'Stark',
     8: 'Sehr stark',
@@ -224,7 +224,7 @@ st.line_chart(new_feeling_data['Stärke der Limitation'])
 
 # Eingabefeld, um regelmässig einzunehmende Medikamente hinzuzufügen
 add_current_medication = st.sidebar.text_input(
-    "Medikament hinzufügen :blue[regelmÃ¤ssige Einnahme]"
+    "Medikament hinzufügen :blue[regelmässige Einnahme]"
     )
 
 
