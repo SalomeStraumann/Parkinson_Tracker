@@ -205,7 +205,6 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Befinden" und "Medikamente"
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
 new_feeling_data = pd.DataFrame(feeling_list)
-st.table(new_feeling_data)
 
 
 # Index auf Datum setzen
@@ -285,7 +284,6 @@ if delete_med:
 
 medi_list = load_key(api_key_med, bin_id_med, username)
 medi_list_data = pd.DataFrame(medi_list)
-st.table(medi_list_data)
 
 
 # Index auf Medikament setzen
