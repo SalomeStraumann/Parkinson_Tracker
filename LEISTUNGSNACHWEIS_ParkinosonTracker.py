@@ -155,7 +155,7 @@ if submit:
     new_feeling = {
         "Datum und Zeit" : datetime_string,
         "Stärke der Limitation": feeling,
-        "Symptome und Schweregrade" : symptoms_and_severity,
+        **symptoms_and_severity,
         "Medikament und Dosierung" : add_medication,
         "Kommentare" :comment
     }
