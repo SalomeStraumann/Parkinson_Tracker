@@ -12,6 +12,30 @@ credentials:
     anna:
       name: Anna
       password: $2b$12$nkiXqmnE.ZQ1DrMMwSEX9uSiDkDkmUm8Rr.JcmaioANNl.zvasJGK # To be replaced with hashed password
+    samuel:
+      name: Samuel Wehrli
+      password: $2b$12$B0ASTp1yKxFmYx5Di6k6yuPn/pu76sKDKPVIsn47x1ECBV0ZXXnkK # To be replaced with hashed password
+    janine:
+      name: Janine
+      password: $2b$12$hrwug.kJcNK4zQJMsShNMuNIk7j07Rj3/.yYYa2wZUoLVMYt6Gbkm # To be replaced with hashed password
+    salome:
+      name: Salome
+      password: $2b$12$xs5Hlqb5Bq0KnczFq4PwZ.2gIjwOpP/5KH/RNsJYMylWB/Ja2WG66 # To be replaced with hashed password
+    noah:
+      name: Noah
+      password: $2b$12$XU8HXogfbPgBCQ3Y2oPpuO64NGAP8TvWD83PtU36JvkiFqTxANdTK # To be replaced with hashed password
+    susanne:
+      name: Susanne
+      password: $2b$12$brvvFDJ8Pfu3grYsLdF1z.X5DqVjqjd.6CWF191fYv3inYKnn7Aba # To be replaced with hashed password
+    florin:
+      name: Florin van Oordt
+      password: $2b$12$hbX4P7zwRpXLUmMYwYkkYe8hhR0JTsaOn4rKFXmLFmC5/HG11Xbce # To be replaced with hashed password
+    irina:
+      name: Irina van Oordt
+      password: $2b$12$1PkXfew8.ablzzuQ5fBk8eIFH2swTkNKWM2GqEGBflYt4c3N7l62W # To be replaced with hashed password
+    ledna:
+      name: Ledna Oettli
+      password: $2b$12$jt9AnDoPNxemS/d3SY9gC.eYnk5wMxHfg.0f7/sbuUa5ocD1Lkhty # To be replaced with hashed password    
     fabienne:
       name: Fabienne Schätti
       password: $2b$12$4ivfeRX/xhofPMDbA0XSVufNBzHUaXtYiUdVwh2Ex7Q2v9YZmZdQO # To be replaced with hashed password
