@@ -93,7 +93,7 @@ for symptom in selected_symptoms:
     )
     severity_levels[symptom] = severity_level
 # Einschub auf der Hauptseite
-# Anzeige der ausgewÃ¤hlten Symptome und Schweregrade auf der Hauptseite, falls Eingabefeld ausgefüllt
+# Anzeige der ausgewählten Symptome und Schweregrade auf der Hauptseite, falls Eingabefeld ausgefüllt
 if selected_symptoms:
     st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
     for symptom in selected_symptoms:
@@ -172,7 +172,6 @@ else:
  
 # Löschen des letzten Eintrags
 if delete:
-    # delete last entry
     feeling_list = load_key(api_key_sick, bin_id_sick, username)
     feeling_list.pop()
     record_sick = save_key(api_key_sick, bin_id_sick, username, feeling_list)
