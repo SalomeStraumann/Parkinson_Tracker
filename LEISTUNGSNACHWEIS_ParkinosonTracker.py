@@ -8,83 +8,80 @@ from jsonbin import load_key, save_key
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-#import matplotlib.pyplot as plt
 
-# -------- load secrets for jsonbin.io --------
+# Laden der Secrets für jsonbin.io
 jsonbin_secrets = st.secrets["jsonbin"]
 api_key_med = jsonbin_secrets["api_key_med"]
 bin_id_med = jsonbin_secrets["bin_id_med"]
 api_key_sick = jsonbin_secrets["api_key_sick"]
 bin_id_sick = jsonbin_secrets["bin_id_sick"]
 
-
-# -------- user login --------
+# Benutzerlogin
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+# Initialisierung des Authenticators
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
     config['cookie']['key'],
     config['cookie']['expiry_days'],
 )
+
+# Durchführung des Logins
 fullname, authentication_status, username = authenticator.login('Login', 'main')
 
-if authentication_status == True:   # login successful
+# Überprüfung des Login-Status
+if authentication_status == True:   # Login erfolgreich
     show_logout_button = True
 elif authentication_status == False:
-    st.error('Username/password is incorrect')
+    st.error('Benutzername/Passwort ist falsch')
     st.stop()
 elif authentication_status == None:
-    st.warning('Please enter your username and password')
+    st.warning('Bitte Benutzername und Passwort eingeben')
     st.stop()
 
-# Hauptseite
-
-# Titel der App
+# Hauptseite der App
 st.title("Parkinson Tracker")
-# Begrüssung
+# Begrüßungsnachricht
 text_before = "Hallo,"
 text_after = "!"
 st.header("{} {}{}".format(text_before, username, text_after))
-# Information für den Nutzer
+# Hinweis für den Benutzer
 st.warning("Bitte beantworte die Fragen in der Seitenleiste")
-
 
 # Seitenleiste
 # Eingabefelder für Datum und Uhrzeit
 date = st.sidebar.date_input("Datum", datetime.date(2023, 5, 20))
 time = st.sidebar.time_input("Uhrzeit", datetime.time(12, 00))
-# Kombination von Datum und Uhrzeit zu einem Datetime-Objekt
+# Kombination von Datum und Uhrzeit zu einem DateTime-Objekt
 datetime_obj = datetime.datetime.combine(date, time)
-# Formation des Datetime-Objekts zum String
+# Formatierung des DateTime-Objekts als String
 datetime_string = datetime_obj.strftime('%Y-%m-%d, %H:%M')
+
 # Untertitel Seitenleiste - Befinden
-st.sidebar.header(':blue[Befinden]')
+st.sidebar.header(':blue:[Befinden]')
 # Liste der verfügbaren Symptome
 symptoms = [
-    'Taubheitsgefühl in den Beinen', 
-    'Taubheitsgefühl in den Armen', 
-    'Kribbeln in den Beinen', 
+    'Taubheitsgefühl in den Beinen',
+    'Taubheitsgefühl in den Armen',
+    'Kribbeln in den Beinen',
     'Kribbeln in den Armen',
     'Tremor (Zittern)',
     'Steifheit der Muskeln',
-    'Langsame Bewegungen'
-    'Rasche Erschöpfung', 
-    'Probleme bei der Darmentleerung', 
-    'Probleme bei der Blasenentleerung', 
-    'Gangstörungen', 
-    'Gleichgewichtsstörungen', 
-    'Sehstörungen', 
-    'Lähmungserscheinungen', 
+    'Langsame Bewegungen',
+    'Rasche Erschöpfung',
+    'Probleme bei der Darmentleerung',
+    'Probleme bei der Blasenentleerung',
+    'Gangstörungen',
+    'Gleichgewichtsstörungen',
+    'Sehstörungen',
+    'Lähmungserscheinungen',
     'Globale Schmerzen',
     'Keine Symptome'
 ]
 # Multiselect-Widget für die verfügbaren Symptome
-selected_symptoms = st.sidebar.multiselect(
-    'Symptome', 
-    symptoms
-    )
+selected_symptoms = st.sidebar.multiselect('Symptome', symptoms)
 # Eingabefelder für die Schweregrade der ausgewählten Symptome
 severity_levels = {}
 for symptom in selected_symptoms:
