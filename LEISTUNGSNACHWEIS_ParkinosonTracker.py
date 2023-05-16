@@ -50,10 +50,6 @@ st.header("{} {}{}".format(text_before, username, text_after))
 # Information für den Nutzer
 st.warning("Bitte beantworte die Fragen in der Seitenleiste")
 
-if show_logout_button:
-    # Logout-Button am Ende des Codes platzieren
-    authenticator.logout('Logout', 'main')
-
 
 # Seitenleiste
 # Eingabefelder für Datum und Uhrzeit
@@ -299,3 +295,8 @@ with tab1:
 with tab2:
     st.header("Medikamente")
     st.write(medi_list_data)
+
+
+if show_logout_button:
+    # Logout-Button am Ende des Codes platzieren
+    authenticator.logout('Logout', 'main')
