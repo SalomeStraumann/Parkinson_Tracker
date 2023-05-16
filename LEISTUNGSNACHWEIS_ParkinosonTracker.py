@@ -8,7 +8,7 @@ from jsonbin import load_key, save_key
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-
+import matplotlib.pyplot as plt
 
 # -------- load secrets for jsonbin.io --------
 jsonbin_secrets = st.secrets["jsonbin"]
@@ -50,14 +50,6 @@ text_after = "!"
 st.header("{} {}{}".format(text_before, username, text_after))
 # Information für den Nutzer
 st.warning("Bitte beantworte die Fragen in der Seitenleiste")
-
-# Bild
-if username == "sara":
-    image_sara = Image.open("sara.jpg")
-    st.image(image_sara, width = 400)
-else:
-    image = Image.open("Maya.jpg")
-    st.image(image, width = 400)
 
 
 # Seitenleiste
@@ -158,14 +150,9 @@ delete = st.sidebar.button("Lezter Eintrag löschen")
 
 
 
-
-
-
-
-
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Befinden" und "Medikamente"
 
-# Funktion, um Daten der Tabelle "Krankheitsverlauf" hizuzufÃ¼gen
+# Funktion, um Daten der Tabelle "Krankheitsverlauf" hizuzufügen
 if submit:
     st.sidebar.write('Deine Daten wurden gespeichert.')
     st.balloons()   
@@ -200,24 +187,31 @@ if delete:
     
 # Überschrift  Diagram
 st. header(':blue[Limitation im Verlauf der Zeit]')
- 
 
-# Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Befinden" und "Medikamente"
+# Lade die Daten und konvertiere sie in ein DataFrame
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
 new_feeling_data = pd.DataFrame(feeling_list)
-
 
 # Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
 
+# Benutzereingabe für die Zeitspanne
+time_periods = ['Heute', 'Letzte Woche', 'Letzter Monat']
+selected_time_period = st.selectbox('Zeitspanne auswählen:', time_periods)
 
-# Darstellung der Daten in einem Diagram
+# Filtere die Daten basierend auf der ausgewählten Zeitspanne
+if selected_time_period == 'Heute':
+    filtered_data = new_feeling_data.tail(5)  # Filtert die letzten 7 Einträge
+elif selected_time_period == 'Letzte Woche':
+    filtered_data = new_feeling_data.tail(35)  # Filtert die letzten 30 Einträge
+elif selected_time_period == 'Letzter Monat':
+    filtered_data = new_feeling_data.tail(140)  # Filtert die letzten 90 Einträge
+else:
+    filtered_data = new_feeling_data  # Kein Filter angewendet
 
+# Darstellung der Daten in einem Diagramm
 # Liniendiagramm "Limitation durch die Symptome im Verlauf der Zeit" anzeigen
-st.line_chart(new_feeling_data['Stärke der Limitation'])
-
-
-
+st.line_chart(filtered_data['Stärke der Limitation'])
 
 
 # Einschub auf der Seitenleiste - Medikamente zur regelmässigen Einnahme
@@ -242,9 +236,7 @@ add_current_medication_time = st.sidebar.text_input(
 
 # Zweiter Button zum Speichern der Medikamente
 submit_med = st.sidebar.button("zur aktuellen Medikamentenliste hinzufügen")
-delete_med = st.sidebar.button("Leztes Medikament löschen")
-
-
+delete_med = st.sidebar.button("Letztes Medikament löschen")
 
 
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
@@ -279,7 +271,6 @@ if delete_med:
         st.error(record_med['message'])
 
 
-
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
 medi_list = load_key(api_key_med, bin_id_med, username)
@@ -288,7 +279,6 @@ medi_list_data = pd.DataFrame(medi_list)
 
 # Index auf Medikament setzen
 medi_list_data = medi_list_data.set_index('Medikament')
-
 
 
 # Anpassung der Darstellung auf der Hauptseite
