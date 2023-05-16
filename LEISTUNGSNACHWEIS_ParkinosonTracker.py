@@ -8,7 +8,7 @@ from jsonbin import load_key, save_key
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 # -------- load secrets for jsonbin.io --------
 jsonbin_secrets = st.secrets["jsonbin"]
