@@ -288,7 +288,7 @@ medi_list_data = pd.DataFrame(medi_list)
 
 
 # Index auf Medikament setzen
-medi_list_data = medi_list_data.set_index('Medikament')
+#medi_list_data = medi_list_data.set_index('Medikament')
 
 
 # Anpassung der Darstellung auf der Hauptseite
