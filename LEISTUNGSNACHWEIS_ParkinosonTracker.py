@@ -186,16 +186,13 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 # Lade die Daten und konvertiere sie in ein DataFrame
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
 
-if feeling_list:
-    pd.DataFrame(feeling_list)
-    # Ausgabe des DataFrames
-    #st.write(new_feeling_data)
-else:
+if not feeling_list:
     st.warning('Es sind keine Daten vorhanden.')
     if show_logout_button:
-    # Logout-Button am Ende des Codes platzieren
+        # Logout-Button am Ende des Codes platzieren
         authenticator.logout('Logout', 'main')
     st.stop()
+
 
 # Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
