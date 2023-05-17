@@ -185,6 +185,7 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 
 # Lade die Daten und konvertiere sie in ein DataFrame
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
+new_feeling_data = pd.DataFrame(feeling_list)
 
 if feeling_list:
     new_feeling_data = pd.DataFrame(feeling_list)
