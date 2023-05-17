@@ -176,10 +176,7 @@ if delete:
     feeling_list.pop()
     record_sick = save_key(api_key_sick, bin_id_sick, username, feeling_list)
     if 'message' in record_sick:
-        st.error(record_sick['message'])
-
-
-        
+        st.error(record_sick['message'])       
         
 
 
@@ -238,12 +235,7 @@ if delete_med:
     record_med = save_key(api_key_med, bin_id_med, username, medi_list)
     if 'message' in record_med:
         st.error(record_med['message'])
-
-        
-        
-        
-        
-        
+      
         
     
 # Überschrift  Diagram
@@ -253,7 +245,7 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
 
 if not feeling_list:
-    st.warning('Es sind keine Daten vorhanden.')
+    st.warning('Es sind noch keine Daten vorhanden.')
     if show_logout_button:
         # Logout-Button am Ende des Codes platzieren
         authenticator.logout('Logout', 'main')
