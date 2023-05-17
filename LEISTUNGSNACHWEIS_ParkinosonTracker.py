@@ -193,7 +193,7 @@ if not feeling_list:
         authenticator.logout('Logout', 'main')
     st.stop()
 
-
+new_feeling_data = pd.DataFrame(feeling_list)
 # Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
 
