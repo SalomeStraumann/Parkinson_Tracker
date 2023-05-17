@@ -306,11 +306,6 @@ with tab1:
 with tab2:
     st.header("Medikamente")
 
-    if not medi_list:
-    st.warning('Es sind keine Daten vorhanden.')
-    else:
-        new_feeling_data = pd.DataFrame(feeling_list)
-
 
 if show_logout_button:
     # Logout-Button am Ende des Codes platzieren
