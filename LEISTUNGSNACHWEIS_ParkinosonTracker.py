@@ -60,7 +60,7 @@ datetime_obj = datetime.datetime.combine(date, time)
 datetime_string = datetime_obj.strftime('%Y-%m-%d, %H:%M')
 
 # Untertitel Seitenleiste - Befinden
-st.sidebar.header(':blue:[Befinden]')
+st.sidebar.header(':blue[Befinden]')
 # Liste der verfügbaren Symptome
 symptoms = [
     'Taubheitsgefühl in den Beinen',
@@ -155,7 +155,7 @@ if submit:
     new_feeling = {
         "Datum und Zeit" : datetime_string,
         "Stärke der Limitation": feeling,
-        **symptoms_and_severity,
+        "Symptome und Schweregrade" : severity_level,
         "Medikament und Dosierung" : add_medication,
         "Kommentare" :comment
     }
@@ -185,7 +185,17 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 
 # Lade die Daten und konvertiere sie in ein DataFrame
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
-new_feeling_data = pd.DataFrame(feeling_list)
+
+if feeling_list:
+    new_feeling_data = pd.DataFrame(feeling_list)
+    # Ausgabe des DataFrames
+    st.write(new_feeling_data)
+else:
+    st.warning('Es sind keine Daten vorhanden.')
+    show_logout_button:
+    # Logout-Button am Ende des Codes platzieren
+    authenticator.logout('Logout', 'main')
+    st.stop()
 
 # Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
