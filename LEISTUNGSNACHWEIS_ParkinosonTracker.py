@@ -187,7 +187,8 @@ st. header(':blue[Limitation im Verlauf der Zeit]')
 feeling_list = load_key(api_key_sick, bin_id_sick, username)
 
 if feeling_list:
-    new_feeling_data = pd.DataFrame(feeling_list)
+    new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
+    #new_feeling_data = pd.DataFrame(feeling_list)
     # Ausgabe des DataFrames
     #st.write(new_feeling_data)
 else:
