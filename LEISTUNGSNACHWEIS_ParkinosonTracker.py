@@ -184,12 +184,12 @@ if delete:
 st. header(':blue[Limitation im Verlauf der Zeit]')
 
 # Lade die Daten und konvertiere sie in ein DataFrame
-feeling_list = load_key(api_key_sick, bin_id_sick, username)
+#feeling_list = load_key(api_key_sick, bin_id_sick, username)
 
 if feeling_list:
     new_feeling_data = pd.DataFrame(feeling_list)
     # Ausgabe des DataFrames
-    st.write(new_feeling_data)
+    #st.write(new_feeling_data)
 else:
     st.warning('Es sind keine Daten vorhanden.')
     if show_logout_button:
