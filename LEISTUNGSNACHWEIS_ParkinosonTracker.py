@@ -305,6 +305,13 @@ with tab1:
 
 with tab2:
     st.header("Medikamente")
+    
+# Lade die Daten und konvertiere sie in ein DataFrame
+feeling_list = load_key(api_key_sick, bin_id_sick, username)
+
+if not medi_list:
+    st.warning('Es sind keine Daten vorhanden.')
+else:
     new_feeling_data = pd.DataFrame(feeling_list)
 
 
