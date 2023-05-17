@@ -192,7 +192,7 @@ if feeling_list:
     st.write(new_feeling_data)
 else:
     st.warning('Es sind keine Daten vorhanden.')
-    show_logout_button:
+    if show_logout_button:
     # Logout-Button am Ende des Codes platzieren
     authenticator.logout('Logout', 'main')
     st.stop()
