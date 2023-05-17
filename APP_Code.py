@@ -305,7 +305,10 @@ with tab1:
 
 with tab2:
     st.header("Medikamente")
-    st.write(medi_list_data)
+    if not medi_list:
+        st.warning('Es sind keine Daten vorhanden.')
+    else:
+        st.write(medi_list_data)
 
 if show_logout_button:
     # Logout-Button am Ende des Codes platzieren
