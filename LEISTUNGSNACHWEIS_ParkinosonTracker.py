@@ -155,7 +155,7 @@ if submit:
     new_feeling = {
         "Datum und Zeit" : datetime_string,
         "Stärke der Limitation": feeling,
-        "Symptome und Schweregrade" : severity_level,
+        "Symptome und Schweregrade" : symptoms_and_severity,
         "Medikament und Dosierung" : add_medication,
         "Kommentare" :comment
     }
@@ -189,6 +189,8 @@ new_feeling_data = pd.DataFrame(feeling_list)
 
 if feeling_list:
     new_feeling_data = pd.DataFrame(feeling_list)
+    # Ausgabe des DataFrames
+    st.write(new_feeling_data)
 else:
     st.warning('Es sind keine Daten vorhanden.')
     if show_logout_button:
