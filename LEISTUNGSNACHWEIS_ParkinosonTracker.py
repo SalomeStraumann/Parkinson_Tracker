@@ -194,7 +194,7 @@ else:
     st.warning('Es sind keine Daten vorhanden.')
     if show_logout_button:
     # Logout-Button am Ende des Codes platzieren
-    authenticator.logout('Logout', 'main')
+        authenticator.logout('Logout', 'main')
     st.stop()
 
 # Index auf Datum setzen
