@@ -189,8 +189,6 @@ new_feeling_data = pd.DataFrame(feeling_list)
 
 if feeling_list:
     new_feeling_data = pd.DataFrame(feeling_list)
-    # Ausgabe des DataFrames
-    st.write(new_feeling_data)
 else:
     st.warning('Es sind keine Daten vorhanden.')
     if show_logout_button:
