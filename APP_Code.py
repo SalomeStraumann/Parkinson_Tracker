@@ -142,7 +142,7 @@ add_medication = st.sidebar.text_input(
 
 # Button zum Speichern der Daten
 submit = st.sidebar.button('Speichern')
-delete = st.sidebar.button("Lezter Eintrag löschen")
+delete = st.sidebar.button("Letzter Eintrag löschen")
 
 
 
