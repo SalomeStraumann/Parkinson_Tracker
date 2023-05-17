@@ -2,11 +2,11 @@ import requests
 
 BIN_API_URL = r'https://api.jsonbin.io/v3/b'
 
-# Sick
+# Funktionen für den "sick"-Teil
 
 def load_data(api_key_sick, bin_id_sick):
     """
-    Load entire bin
+    Lädt den gesamten Bin
     """
     url_sick = BIN_API_URL + '/' + bin_id_sick + '/latest'
     headers_sick = {'X-Master-Key': api_key_sick}
@@ -16,7 +16,7 @@ def load_data(api_key_sick, bin_id_sick):
 
 def save_data(api_key_sick, bin_id_sick, data_sick):
     """
-    Save entire bin
+    Speichert den gesamten Bin
     """
     url_sick = BIN_API_URL + '/' + bin_id_sick
     headers_sick = {'X-Master-Key': api_key_sick, 'Content-Type': 'application/json'}
@@ -26,7 +26,7 @@ def save_data(api_key_sick, bin_id_sick, data_sick):
 
 def load_key(api_key_sick, bin_id_sick, key_sick, empty_value=[]):
     """
-    Load key from bin
+    Lädt den Wert für einen bestimmten Schlüssel aus dem Bin
     """
     url_sick = BIN_API_URL + '/' + bin_id_sick + '/latest'
     headers_sick = {'X-Master-Key': api_key_sick}
@@ -40,31 +40,25 @@ def load_key(api_key_sick, bin_id_sick, key_sick, empty_value=[]):
 
 def save_key(api_key_sick, bin_id_sick, key_sick, data_sick):
     """
-    Save key to bin
+    Speichert den Wert für einen bestimmten Schlüssel im Bin
     """
     url_sick = BIN_API_URL + '/' + bin_id_sick
     headers_sick = {'X-Master-Key': api_key_sick, 'Content-Type': 'application/json'}
     response_sick = requests.get(url_sick, headers=headers_sick).json()
     record_sick = response_sick['record']
     if type(record_sick) != dict:
-        record_sick = {key_sick: data_sick}  # generate new dict
+        record_sick = {key_sick: data_sick}  # erzeuge ein neues Dictionary
     else:
         record_sick[key_sick] = data_sick
     response_sick = requests.put(url_sick, headers=headers_sick, json=record_sick).json()
     return response_sick
 
 
-
-
-# med
-
-import requests
-
-BIN_API_URL = r'https://api.jsonbin.io/v3/b'
+# Funktionen für den "med"-Teil
 
 def load_data(api_key_med, bin_id_med):
     """
-    Load entire bin
+    Lädt den gesamten Bin
     """
     url_med = BIN_API_URL + '/' + bin_id_med + '/latest'
     headers_med = {'X-Master-Key': api_key_med}
@@ -74,7 +68,7 @@ def load_data(api_key_med, bin_id_med):
 
 def save_data(api_key_med, bin_id_med, data_med):
     """
-    Save entire bin
+    Speichert den gesamten Bin
     """
     url_med = BIN_API_URL + '/' + bin_id_med
     headers_med = {'X-Master-Key': api_key_med, 'Content-Type': 'application/json'}
@@ -84,7 +78,7 @@ def save_data(api_key_med, bin_id_med, data_med):
 
 def load_key(api_key_med, bin_id_med, key_med, empty_value=[]):
     """
-    Load key from bin
+    Lädt den Wert für einen bestimmten Schlüssel aus dem Bin
     """
     url_med = BIN_API_URL + '/' + bin_id_med + '/latest'
     headers_med = {'X-Master-Key': api_key_med}
@@ -98,7 +92,7 @@ def load_key(api_key_med, bin_id_med, key_med, empty_value=[]):
 
 def save_key(api_key_med, bin_id_med, key_med, data_med):
     """
-    Save key to bin
+    Speichert den Wert für einen bestimmten Schlüssel im Bin
     """
     url_med = BIN_API_URL + '/' + bin_id_med
     headers_med = {'X-Master-Key': api_key_med, 'Content-Type': 'application/json'}
