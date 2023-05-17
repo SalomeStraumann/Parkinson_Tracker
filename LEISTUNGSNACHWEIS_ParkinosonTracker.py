@@ -299,7 +299,7 @@ with tab1:
 
 with tab2:
     st.header("Medikamente")
-    st.write(medi_list_data)
+    new_feeling_data = pd.DataFrame(feeling_list)
 
 
 if show_logout_button:
