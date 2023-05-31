@@ -94,19 +94,16 @@ for symptom in selected_symptoms:
         )
         severity_levels[symptom] = severity_level
 
-st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
 if selected_symptoms:
+    st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
     for symptom in selected_symptoms:
         if symptom != 'Keine Symptome':
             severity_level = severity_levels[symptom]
             st.write(f'- {symptom}: {severity_level}')
-        else:
-            severity_level = 0
-            st.write(f'- {symptom}: {severity_level}')
+
+    symptoms_and_severity = {symptom: severity_levels[symptom] for symptom in selected_symptoms if symptom != 'Keine Symptome'}
 else:
     st.write('Keine Symptome ausgewählt')
-
-symptoms_and_severity = {symptom: severity_levels[symptom]}
 
 # Seitenleiste
 # Slider für Stärke der Limitation in der Gesamtheit
