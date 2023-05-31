@@ -197,7 +197,7 @@ add_current_medication_time = st.sidebar.text_input(
     
 
 # Zweiter Button zum Speichern der Medikamente
-submit_med = st.sidebar.button("zur aktuellen Medikamentenliste hinzufügen")
+submit_med = st.sidebar.button("zur Medikamentenliste hinzufügen")
 delete_med = st.sidebar.button("Letztes Medikament löschen")
 
 
