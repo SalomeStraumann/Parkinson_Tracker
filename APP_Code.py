@@ -80,29 +80,31 @@ symptoms = [
     'Globale Schmerzen',
     'Keine Symptome'
 ]
-# Multiselect-Widget für die verfügbaren Symptome
+
 selected_symptoms = st.sidebar.multiselect('Wähle deine aktuellen Symptome aus', symptoms)
-# Eingabefelder für die Schweregrade der ausgewählten Symptome
+
 severity_levels = {}
 for symptom in selected_symptoms:
-    severity_level = st.sidebar.number_input(
-        f'Wie stark ist das Symptom "{symptom}" auf einer Skala? 0 = Nicht vorhanden, 10 = Extrem stark.', 
-        min_value=0, 
-        max_value=10, 
-        value=5
-    )
-    severity_levels[symptom] = severity_level
-# Einschub auf der Hauptseite
-# Anzeige der ausgewählten Symptome und Schweregrade auf der Hauptseite, falls Eingabefeld ausgefüllt
+    if symptom != 'Keine Symptome':
+        severity_level = st.sidebar.number_input(
+            f'Wie stark ist das Symptom "{symptom}" auf einer Skala? 0 = Nicht vorhanden, 10 = Extrem stark.',
+            min_value=0,
+            max_value=10,
+            value=5
+        )
+        severity_levels[symptom] = severity_level
+
 if selected_symptoms:
     st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
     for symptom in selected_symptoms:
-        severity_level = severity_levels[symptom]
-        st.write(f'- {symptom}: {severity_level}')
-# Speichern der ausgewählten Symptome und Schweregrade in einem Dictionary
-    symptoms_and_severity = {symptom: severity_levels[symptom] for symptom in selected_symptoms}
+        if symptom != 'Keine Symptome':
+            severity_level = severity_levels[symptom]
+            st.write(f'- {symptom}: {severity_level}')
+
+    symptoms_and_severity = {symptom: severity_levels[symptom] for symptom in selected_symptoms if symptom != 'Keine Symptome'}
 else:
     st.write('Keine Symptome ausgewählt')
+
 # Seitenleiste
 # Slider für Stärke der Limitation in der Gesamtheit
 feeling = st.sidebar.slider('Wie stark limitieren dich die Symptome gerade im Alltag?', 0, 10, 1)
