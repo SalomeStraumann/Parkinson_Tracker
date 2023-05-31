@@ -292,15 +292,8 @@ tab1, tab2 = st.tabs(["Krankheitsverlauf", "Medikamente"])
 with tab1:
    st.header("Krankheitsverlauf")
   # st.write(new_feeling_data)
-       # Entferne spezielle Zeichen
-   # Konvertiere den Index der Spaltennamen in eine Liste
-column_names = new_feeling_data.columns.tolist()
-
-# Bearbeite die Zeichenketten in der Liste
-column_names = [name.replace("'", "").replace('"', '').replace('{', '').replace('}', '') for name in column_names]
-
-# Weise den bearbeiteten Index dem DataFrame zu
-new_feeling_data.columns = column_names
+# Entferne spezielle Zeichen aus den Spaltennamen
+new_feeling_data.columns = new_feeling_data.columns.str.replace(r"[{}'\"]", "", regex=True)
 
 # Zeige das aktualisierte DataFrame an
 st.write(new_feeling_data)
