@@ -299,7 +299,7 @@ with tab1:
     
  # Entferne spezielle Zeichen
 special_chars = ["'", '"']
-new_feeling_data_str = ''.join(char for char in new_feeling_data_str if char not in special_chars)
+new_feeling_data_str = ''.join(char for char in new_feeling_data if char not in special_chars)
 
 st.write(new_feeling_data_str)   
 
