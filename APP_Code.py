@@ -241,11 +241,11 @@ selected_time_period = st.selectbox('Zeitspanne auswählen:', time_periods)
 
 # Filtere die Daten basierend auf der ausgewählten Zeitspanne
 if selected_time_period == 'Heute':
-    filtered_data = new_feeling_data.tail(5)  # Filtert die letzten 7 Einträge
+    filtered_data = new_feeling_data.tail(5)  # Filtert die letzten 5 Einträge
 elif selected_time_period == 'Letzte Woche':
-    filtered_data = new_feeling_data.tail(35)  # Filtert die letzten 30 Einträge
+    filtered_data = new_feeling_data.tail(35)  # Filtert die letzten 35 Einträge
 elif selected_time_period == 'Letzter Monat':
-    filtered_data = new_feeling_data.tail(140)  # Filtert die letzten 90 Einträge
+    filtered_data = new_feeling_data.tail(140)  # Filtert die letzten 140 Einträge
 else:
     filtered_data = new_feeling_data  # Kein Filter angewendet
 
