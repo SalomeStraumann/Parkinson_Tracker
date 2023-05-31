@@ -293,9 +293,9 @@ with tab1:
    st.header("Krankheitsverlauf")
   # st.write(new_feeling_data)
        # Entferne spezielle Zeichen
-   new_feeling_data_str = new_feeling_data.replace("'", "").replace('"', '').replace('{', '').replace('}', '')
+   new_feeling_data.columns = new_feeling_data.columns.str.replace("'", "").str.replace('"', '').str.replace('{', '').str.replace('}', '')
 
-   st.write(new_feeling_data_str) 
+   st.write(new_feeling_data) 
     
 
 with tab2:
