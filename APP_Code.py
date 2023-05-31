@@ -293,10 +293,18 @@ with tab1:
    st.header("Krankheitsverlauf")
   # st.write(new_feeling_data)
        # Entferne spezielle Zeichen
-   new_feeling_data.columns = new_feeling_data.columns.str.replace("'", "").str.replace('"', '').str.replace('{', '').str.replace('}', '')
+   # Konvertiere den Index der Spaltennamen in eine Liste
+column_names = new_feeling_data.columns.tolist()
 
-   st.write(new_feeling_data) 
-    
+# Bearbeite die Zeichenketten in der Liste
+column_names = [name.replace("'", "").replace('"', '').replace('{', '').replace('}', '') for name in column_names]
+
+# Weise den bearbeiteten Index dem DataFrame zu
+new_feeling_data.columns = column_names
+
+# Zeige das aktualisierte DataFrame an
+st.write(new_feeling_data)
+
 
 with tab2:
     st.header("Medikamente")
