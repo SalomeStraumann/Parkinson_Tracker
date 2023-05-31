@@ -144,7 +144,6 @@ submit = st.sidebar.button('Speichern')
 delete = st.sidebar.button("Letzter Eintrag löschen")
 
 
-
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Befinden" und "Medikamente"
 
 # Funktion, um Daten der Tabelle "Krankheitsverlauf" hizuzufügen
@@ -165,8 +164,7 @@ if submit:
 
 else:
     st.sidebar.write('Deine Daten wurden noch nicht gespeichert.')
- 
-    
+     
  
 # Löschen des letzten Eintrags
 if delete:
@@ -180,28 +178,14 @@ if delete:
 
 # Einschub auf der Seitenleiste - Medikamente zur regelmässigen Einnahme
 
-# Eingabefeld, um regelmässig einzunehmende Medikamente hinzuzufügen
-add_current_medication = st.sidebar.text_input(
-    "Medikament hinzufügen :blue[regelmässige Einnahme]"
-    )
-
-
-# Eingabefeld, um Einnahmezeiten der regelmässig einzunehmenden Medikamente hinzuzufügen
-add_current_medication_dose = st.sidebar.text_input(
-     "Dosierung"
-     )
-
-
-# Eingabefeld, um Einnahmezeiten der regelmässig einzunehmenden Medikamente hinzuzufügen
-add_current_medication_time = st.sidebar.text_input(
-     "Einnahmezeiten"
-     )
-    
+# Eingabefelder, um regelmässig einzunehmende Medikamente hinzuzufügen
+add_current_medication = st.sidebar.text_input("Medikament hinzufügen :blue[regelmässige Einnahme]")
+add_current_medication_dose = st.sidebar.text_input("Dosierung")
+add_current_medication_time = st.sidebar.text_input("Einnahmezeiten")  
 
 # Zweiter Button zum Speichern der Medikamente
 submit_med = st.sidebar.button("zur Medikamentenliste hinzufügen")
 delete_med = st.sidebar.button("Letztes Medikament löschen")
-
 
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
@@ -222,12 +206,10 @@ if submit_med:
 
 else:
     st.sidebar.write('Deine Daten wurden noch nicht gespeichert.')
- 
-    
+     
  
 # Löschen des letzten Eintrags
 if delete_med:
-    # delete last entry
     medi_list = load_key(api_key_med, bin_id_med, username)
     medi_list.pop()
     record_med = save_key(api_key_med, bin_id_med, username, medi_list)
@@ -245,7 +227,7 @@ feeling_list = load_key(api_key_sick, bin_id_sick, username)
 if not feeling_list:
     st.warning('Es sind noch keine Daten vorhanden.')
     if show_logout_button:
-        # Logout-Button am Ende des Codes platzieren
+        # Logout-Button am Ende der Seite platzieren
         authenticator.logout('Logout', 'main')
     st.stop()
 
@@ -277,10 +259,6 @@ medi_list = load_key(api_key_med, bin_id_med, username)
 medi_list_data = pd.DataFrame(medi_list)
 
 
-# Index auf Medikament setzen
-#medi_list_data = medi_list_data.set_index('Medikament')
-
-
 # Anpassung der Darstellung auf der Hauptseite
 
 # Überschrift
@@ -291,14 +269,8 @@ tab1, tab2 = st.tabs(["Krankheitsverlauf", "Medikamente"])
 
 with tab1:
    st.header("Krankheitsverlauf")
-  # st.write(new_feeling_data)
-import re
+   st.write(new_feeling_data)
 
-# Entferne spezielle Zeichen aus den Spaltennamen
-new_feeling_data.columns = [re.sub(r"[{}'\"]", "", col) for col in new_feeling_data.columns]
-
-# Zeige das aktualisierte DataFrame an
-st.write(new_feeling_data)
 
 
 with tab2:
@@ -309,5 +281,5 @@ with tab2:
         st.write(medi_list_data)
 
 if show_logout_button:
-    # Logout-Button am Ende des Codes platzieren
+    # Logout-Button am Ende der Seite platzieren
     authenticator.logout('Logout', 'main')
