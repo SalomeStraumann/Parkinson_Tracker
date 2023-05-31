@@ -141,7 +141,7 @@ else:
 
 # Button zum Speichern der Daten
 submit = st.sidebar.button('Speichern')
-delete = st.sidebar.button("Letzter Eintrag löschen")
+delete = st.sidebar.button("letzter Eintrag löschen")
 
 
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Befinden" und "Medikamente"
@@ -185,7 +185,7 @@ add_current_medication_time = st.sidebar.text_input("Einnahmezeiten")
 
 # Zweiter Button zum Speichern der Medikamente
 submit_med = st.sidebar.button("zur Medikamentenliste hinzufügen")
-delete_med = st.sidebar.button("Letztes Medikament löschen")
+delete_med = st.sidebar.button("letztes Medikament löschen")
 
 # Darstellung der Daten auf der Hauptseite - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
