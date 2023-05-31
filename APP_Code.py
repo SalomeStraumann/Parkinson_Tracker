@@ -93,10 +93,9 @@ for symptom in selected_symptoms:
             value=5
         )
         severity_levels[symptom] = severity_level
-    else: 
-        symptoms = symptoms_and_severity
+    else:
+        symptoms_and_severity = {symptom: 0 for symptom in symptoms}
         
-
 if selected_symptoms:
     st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
     for symptom in selected_symptoms:
@@ -104,7 +103,7 @@ if selected_symptoms:
             severity_level = severity_levels[symptom]
             st.write(f'- {symptom}: {severity_level}')
 
-    symptoms_and_severity = {symptom: severity_levels[symptom] for symptom in selected_symptoms if symptom != 'Keine Symptome'}
+    symptoms_and_severity = {symptom: severity_levels[symptom] if symptom != 'Keine Symptome' else 0 for symptom in symptoms}
 else:
     st.write('Keine Symptome ausgewählt')
 
