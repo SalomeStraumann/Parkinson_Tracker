@@ -292,6 +292,13 @@ tab1, tab2 = st.tabs(["Krankheitsverlauf", "Medikamente"])
 with tab1:
    st.header("Krankheitsverlauf")
    st.write(new_feeling_data)
+       # Entferne spezielle Zeichen
+   new_feeling_data_str = new_feeling_data.replace("'", "").replace('"', '').replace('{', '').replace('}', '')
+
+   st.write(new_feeling_data_str) 
+    
+    
+
 
 with tab2:
     st.header("Medikamente")
