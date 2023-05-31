@@ -106,7 +106,7 @@ if selected_symptoms:
 else:
     st.write('Keine Symptome ausgewählt')
 
-symptoms_and_severity = {symptom: severity_levels[symptom] if symptom != 'Keine Symptome' else selected_symptoms}
+symptoms_and_severity = {symptom: severity_levels[symptom]}
 
 # Seitenleiste
 # Slider für Stärke der Limitation in der Gesamtheit
