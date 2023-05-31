@@ -291,7 +291,7 @@ tab1, tab2 = st.tabs(["Krankheitsverlauf", "Medikamente"])
 
 with tab1:
    st.header("Krankheitsverlauf")
-   st.write(str(new_feeling_data))
+   st.write(new_feeling_data)
 
 with tab2:
     st.header("Medikamente")
