@@ -293,16 +293,10 @@ with tab1:
    st.header("Krankheitsverlauf")
   # st.write(new_feeling_data)
        # Entferne spezielle Zeichen
-  # new_feeling_data_str = new_feeling_data.replace("'", "").replace('"', '').replace('{', '').replace('}', '')
+   new_feeling_data_str = new_feeling_data.replace("'", "").replace('"', '').replace('{', '').replace('}', '')
 
-  # st.write(new_feeling_data_str) 
+   st.write(new_feeling_data_str) 
     
- # Entferne spezielle Zeichen
-special_chars = ["'", '"']
-new_feeling_data_str = ''.join(char for char in new_feeling_data if char not in special_chars)
-
-st.write(new_feeling_data_str)   
-
 
 with tab2:
     st.header("Medikamente")
