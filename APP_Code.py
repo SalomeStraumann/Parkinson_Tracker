@@ -135,12 +135,7 @@ if comment:
     st.write(comment)
 else:
     st.write('Kein Kommentar hinzugefügt')
-# Untertitel Seitenleiste - Medikamente
-st.sidebar.header(':blue[Medikamente]')
-# Eingabefeld, um einmalige Medikamenteneinnahme hinzuzufügen
-add_medication = st.sidebar.text_input(
-    'Medikament inklusive Dosierung hinzufügen :blue[einmalige Einnahme]'
-    )
+
 
 # Button zum Speichern der Daten
 submit = st.sidebar.button('Speichern')
@@ -158,7 +153,6 @@ if submit:
         "Datum und Zeit" : datetime_string,
         "Stärke der Limitation": feeling,
         "Symptome und Schweregrade" : symptoms_and_severity,
-        "Medikament und Dosierung" : add_medication,
         "Kommentare" :comment
     }
     feeling_list = load_key(api_key_sick, bin_id_sick, username)
