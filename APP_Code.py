@@ -102,6 +102,7 @@ if selected_symptoms:
             st.write(f'- {symptom}: {severity_level}')
             symptoms_and_severity = {symptom: severity_levels[symptom] for symptom in selected_symptoms if symptom != 'Keine Symptome'}
         else:
+            st.write ('Keine Symptome')
             symptoms_and_severity = "Keine Symptome"
 else:
     st.write('Keine Symptome ausgewählt')
