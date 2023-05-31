@@ -93,6 +93,9 @@ for symptom in selected_symptoms:
             value=5
         )
         severity_levels[symptom] = severity_level
+    else: 
+        symptoms = symptoms_and_severity
+        
 
 if selected_symptoms:
     st.write(':blue[Ausgewählte Symptome und Schweregrade:]')
