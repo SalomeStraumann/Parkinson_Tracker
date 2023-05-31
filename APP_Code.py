@@ -292,8 +292,10 @@ tab1, tab2 = st.tabs(["Krankheitsverlauf", "Medikamente"])
 with tab1:
    st.header("Krankheitsverlauf")
   # st.write(new_feeling_data)
+import re
+
 # Entferne spezielle Zeichen aus den Spaltennamen
-new_feeling_data.columns = new_feeling_data.columns.str.replace(r"[{}'\"]", "", regex=True)
+new_feeling_data.columns = [re.sub(r"[{}'\"]", "", col) for col in new_feeling_data.columns]
 
 # Zeige das aktualisierte DataFrame an
 st.write(new_feeling_data)
