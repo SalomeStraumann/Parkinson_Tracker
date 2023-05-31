@@ -81,7 +81,7 @@ symptoms = [
     'Keine Symptome'
 ]
 # Multiselect-Widget für die verfügbaren Symptome
-selected_symptoms = st.sidebar.multiselect('Symptome', symptoms)
+selected_symptoms = st.sidebar.multiselect('Wähle deine aktuellen Symptome aus', symptoms)
 # Eingabefelder für die Schweregrade der ausgewählten Symptome
 severity_levels = {}
 for symptom in selected_symptoms:
