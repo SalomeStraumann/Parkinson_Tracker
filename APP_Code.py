@@ -239,18 +239,20 @@ selected_time_period = st.selectbox('Zeitspanne auswählen:', time_periods)
 
 if selected_time_period == 'Heute':
     filtered_data = new_feeling_data.tail(5)
+    mark_data = None
 elif selected_time_period == 'Letzte Woche':
     filtered_data = new_feeling_data.tail(35)
+    mark_data = None
 elif selected_time_period == 'Letzter Monat':
     filtered_data = new_feeling_data.tail(140)
-    x_axis_label = None  # Keine Beschriftung der x-Achse
+    mark_data = filtered_data[::6].index  # Nur jeden 6. Datenpunkt markieren
 else:
     filtered_data = new_feeling_data
-    x_axis_label = 'Datum und Zeit'  # Standardmäßige Beschriftung der x-Achse
+    mark_data = None
 
 chart_title = 'Limitation durch die Symptome im Verlauf der Zeit'
 
-st.line_chart(filtered_data['Stärke der Limitation'], use_container_width=True, x=x_axis_label)
+st.line_chart(filtered_data['Stärke der Limitation'], mark_data=mark_data)
 
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
