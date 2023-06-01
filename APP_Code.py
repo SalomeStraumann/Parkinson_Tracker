@@ -230,28 +230,29 @@ if not feeling_list:
         # Logout-Button am Ende der Seite platzieren
         authenticator.logout('Logout', 'main')
     st.stop()
+import streamlit as st
 
 new_feeling_data = pd.DataFrame(feeling_list)
-# Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
 
-# Benutzereingabe für die Zeitspanne
 time_periods = ['Heute', 'Letzte Woche', 'Letzter Monat']
 selected_time_period = st.selectbox('Zeitspanne auswählen:', time_periods)
 
-# Filtere die Daten basierend auf der ausgewählten Zeitspanne
 if selected_time_period == 'Heute':
-    filtered_data = new_feeling_data.tail(5)  # Filtert die letzten 5 Einträge
+    filtered_data = new_feeling_data.tail(5)
 elif selected_time_period == 'Letzte Woche':
-    filtered_data = new_feeling_data.tail(35)  # Filtert die letzten 35 Einträge
+    filtered_data = new_feeling_data.tail(35)
 elif selected_time_period == 'Letzter Monat':
-    filtered_data = new_feeling_data.tail(140)  # Filtert die letzten 140 Einträge
+    filtered_data = new_feeling_data.tail(140)
 else:
-    filtered_data = new_feeling_data  # Kein Filter angewendet
+    filtered_data = new_feeling_data
 
-# Darstellung der Daten in einem Diagramm
-# Liniendiagramm "Limitation durch die Symptome im Verlauf der Zeit" anzeigen
-st.line_chart(filtered_data['Stärke der Limitation'])
+chart_title = 'Limitation durch die Symptome im Verlauf der Zeit'
+
+if selected_time_period == 'Letzter Monat':
+    st.line_chart(filtered_data['Stärke der Limitation'], use_container_width=True)
+else:
+    st.line_chart(filtered_data['Stärke der Limitation'])
 
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
