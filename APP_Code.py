@@ -88,7 +88,7 @@ for symptom in selected_symptoms:
     if symptom != 'Keine Symptome':
         severity_level = st.sidebar.number_input(
             f'Wie stark ist das Symptom "{symptom}" auf einer Skala? 0 = Nicht vorhanden, 10 = Extrem stark.',
-            min_value=0,
+            min_value=1,
             max_value=10,
             value=5
         )
