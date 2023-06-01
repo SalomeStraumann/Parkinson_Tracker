@@ -52,7 +52,7 @@ st.warning("Bitte beantworte die Fragen in der Seitenleiste.")
 
 # Seitenleiste
 # Eingabefelder für Datum und Uhrzeit
-date = st.sidebar.date_input("Datum", datetime.date(2023, 5, 20))
+date = st.sidebar.date_input("Datum", datetime.date(2023, 6, 10))
 time = st.sidebar.time_input("Uhrzeit", datetime.time(12, 00))
 # Kombination von Datum und Uhrzeit zu einem DateTime-Objekt
 datetime_obj = datetime.datetime.combine(date, time)
