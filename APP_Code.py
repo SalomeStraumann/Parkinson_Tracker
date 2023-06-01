@@ -276,7 +276,7 @@ with tab1:
 with tab2:
     st.header("Medikamente")
     if not medi_list:
-        st.warning('Du hast noch keine Medikamente eingetragen')
+        st.warning('Du hast noch keine Medikamente eingetragen.')
     else:
         st.write(medi_list_data)
 
