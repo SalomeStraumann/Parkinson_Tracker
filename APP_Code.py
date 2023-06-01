@@ -38,7 +38,7 @@ elif authentication_status == False:
     st.error('Benutzername/Passwort ist falsch')
     st.stop()
 elif authentication_status == None:
-    st.warning('Bitte Benutzername und Passwort eingeben')
+    st.warning('Bitte Benutzername und Passwort eingeben.')
     st.stop()
 
 # Hauptseite der App
@@ -48,7 +48,7 @@ text_before = "Hallo,"
 text_after = "!"
 st.header("{} {}{}".format(text_before, username, text_after))
 # Hinweis für den Benutzer
-st.warning("Bitte beantworte die Fragen in der Seitenleiste")
+st.warning("Bitte beantworte die Fragen in der Seitenleiste.")
 
 # Seitenleiste
 # Eingabefelder für Datum und Uhrzeit
@@ -81,13 +81,13 @@ symptoms = [
     'Keine Symptome'
 ]
 
-selected_symptoms = st.sidebar.multiselect('Wähle deine aktuellen Symptome aus', symptoms)
+selected_symptoms = st.sidebar.multiselect('Wähle deine aktuellen Symptome aus.', symptoms)
 
 severity_levels = {}
 for symptom in selected_symptoms:
     if symptom != 'Keine Symptome':
         severity_level = st.sidebar.number_input(
-            f'Wie stark ist das Symptom "{symptom}" auf einer Skala? 0 = Nicht vorhanden, 10 = Extrem stark.',
+            f'Wie stark ist das Symptom "{symptom}" auf einer Skala? 1 = nur leicht, 10 = Extrem stark.',
             min_value=1,
             max_value=10,
             value=5
@@ -276,7 +276,7 @@ with tab1:
 with tab2:
     st.header("Medikamente")
     if not medi_list:
-        st.warning('Du hast noch kein Medikamente eingetragen')
+        st.warning('Du hast noch keine Medikamente eingetragen')
     else:
         st.write(medi_list_data)
 
