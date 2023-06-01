@@ -232,27 +232,26 @@ if not feeling_list:
     st.stop()
 
 new_feeling_data = pd.DataFrame(feeling_list)
+# Index auf Datum setzen
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
 
+# Benutzereingabe für die Zeitspanne
 time_periods = ['Heute', 'Letzte Woche', 'Letzter Monat']
 selected_time_period = st.selectbox('Zeitspanne auswählen:', time_periods)
 
+# Filtere die Daten basierend auf der ausgewählten Zeitspanne
 if selected_time_period == 'Heute':
-    filtered_data = new_feeling_data.tail(5)
-    mark_data = None
+    filtered_data = new_feeling_data.tail(5)  # Filtert die letzten 5 Einträge
 elif selected_time_period == 'Letzte Woche':
-    filtered_data = new_feeling_data.tail(35)
-    mark_data = None
+    filtered_data = new_feeling_data.tail(35)  # Filtert die letzten 35 Einträge
 elif selected_time_period == 'Letzter Monat':
-    filtered_data = new_feeling_data.tail(140)
-    mark_data = filtered_data[::6].index  # Nur jeden 6. Datenpunkt markieren
+    filtered_data = new_feeling_data.tail(140)  # Filtert die letzten 140 Einträge
 else:
-    filtered_data = new_feeling_data
-    mark_data = None
+    filtered_data = new_feeling_data  # Kein Filter angewendet
 
-chart_title = 'Limitation durch die Symptome im Verlauf der Zeit'
-
-st.line_chart(filtered_data['Stärke der Limitation'], mark_data=mark_data)
+# Darstellung der Daten in einem Diagramm
+# Liniendiagramm "Limitation durch die Symptome im Verlauf der Zeit" anzeigen
+st.line_chart(filtered_data['Stärke der Limitation'])
 
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
