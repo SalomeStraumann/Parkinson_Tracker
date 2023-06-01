@@ -230,7 +230,6 @@ if not feeling_list:
         # Logout-Button am Ende der Seite platzieren
         authenticator.logout('Logout', 'main')
     st.stop()
-import streamlit as st
 
 new_feeling_data = pd.DataFrame(feeling_list)
 new_feeling_data = new_feeling_data.set_index('Datum und Zeit')
@@ -243,16 +242,15 @@ if selected_time_period == 'Heute':
 elif selected_time_period == 'Letzte Woche':
     filtered_data = new_feeling_data.tail(35)
 elif selected_time_period == 'Letzter Monat':
-    filtered_data = new_feeling_data.tail(140)['Stärke der Limitation']
+    filtered_data = new_feeling_data.tail(140)
+    x_axis_label = None  # Keine Beschriftung der x-Achse
 else:
-    filtered_data = new_feeling_data['Stärke der Limitation']
+    filtered_data = new_feeling_data
+    x_axis_label = 'Datum und Zeit'  # Standardmäßige Beschriftung der x-Achse
 
 chart_title = 'Limitation durch die Symptome im Verlauf der Zeit'
 
-if selected_time_period == 'Letzter Monat':
-    st.line_chart(filtered_data, use_container_width=True)
-else:
-    st.line_chart(filtered_data)
+st.line_chart(filtered_data['Stärke der Limitation'], use_container_width=True, x=x_axis_label)
 
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
