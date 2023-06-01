@@ -243,16 +243,16 @@ if selected_time_period == 'Heute':
 elif selected_time_period == 'Letzte Woche':
     filtered_data = new_feeling_data.tail(35)
 elif selected_time_period == 'Letzter Monat':
-    filtered_data = new_feeling_data.tail(140)
+    filtered_data = new_feeling_data.tail(140)['Stärke der Limitation']
 else:
-    filtered_data = new_feeling_data
+    filtered_data = new_feeling_data['Stärke der Limitation']
 
 chart_title = 'Limitation durch die Symptome im Verlauf der Zeit'
 
 if selected_time_period == 'Letzter Monat':
-    st.line_chart(filtered_data['Stärke der Limitation'], use_container_width=True)
+    st.line_chart(filtered_data, use_container_width=True)
 else:
-    st.line_chart(filtered_data['Stärke der Limitation'])
+    st.line_chart(filtered_data)
 
 # Konvertieren der Daten in ein Pandas DataFrame - Daten aus dem Abschnitt "Medikamente hinzufügen regelmässige Einnahme"
 
